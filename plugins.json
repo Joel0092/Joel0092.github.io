@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Free Notes",
+    "desc": "Free Notes 是一个轻量级的浏览器扩展，专为需要随时记录想法的用户设计。它会在每个网页的书签栏下方显示一个可收纳的便签卡片，支持多分类管理、导入导出等功能。",
+    "img": "images/FreeNotes.png",
+    "download": "https://github.com/Joel0092/Free-Notes/archive/refs/tags/V1.08.zip",
+    "version": "V1.08"
+  }
+] 
