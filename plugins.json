@@ -1,11 +1,7 @@
 [
   {
     "name": "Free Notes",
-    "desc": "Free Notes 随心记插件，它会在每个网页的书签栏下方显示一个可收纳的便签卡片，支持多分类管理、导入导出等功能。
-    V1.09版本已更新支持：
-    1. 拖拉增大或缩小便签
-    2. 更换便签分类位置
-    3. 单个便签页超出容器时可滚动查看",
+    "desc": "Free Notes 随心记插件，它会在每个网页的书签栏下方显示一个可收纳的便签卡片，支持多分类管理、导入导出等功能。\nV1.09版本已更新支持：\n1. 拖拉增大或缩小便签\n2. 更换便签分类位置\n3. 单个便签页超出容器时可滚动查看",
     "img": "FreeNotes.png",
     "download": "https://github.com/Joel0092/Free-Notes/archive/refs/tags/V1.09.zip",
     "version": "V1.09",
@@ -13,17 +9,13 @@
   },
   {
     "name": "Multi Highlight",
-    "desc": "Multi Highlight 多关键词高亮浏览器扩展。
-    V1.07已更新支持：
-    1. 邮箱页面高亮
-    2. 开关单个关键词高亮
-    3. 搜索以及定位关键词
-    4. 安装时附带一些通用的关键词，懒人专属",
+    "desc": "Multi Highlight 多关键词高亮浏览器扩展。\nV1.07已更新支持：\n1. 邮箱页面高亮\n2. 开关单个关键词高亮\n3. 搜索以及定位关键词\n4. 安装时附带一些通用的关键词，懒人专属",
     "img": "Multi Highlight.png",
     "download": "https://github.com/Joel0092/Multi-Highlight/archive/refs/tags/V1.07.zip",
     "version": "V1.07",
     "video": "guide2.mp4"
   }
 ]
+
 
 
