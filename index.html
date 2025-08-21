@@ -3,159 +3,490 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watson 的插件下载站</title>
+  <title>浏览器插件下载站</title>
   <style>
-    body {
-      font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
-      background: #f7f9fa;
+    :root {
+      --primary-color: #0078d7;
+      --primary-hover: #106ebe;
+      --text-primary: #000000;
+      --text-secondary: #505050;
+      --bg-light: #f0f0f0;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+      --shadow-hover: 0 6px 12px rgba(0,120,215,0.15);
+      --radius-sm: 2px;
+      --radius-md: 4px;
+      --radius-lg: 6px;
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      --border-color: #e0e0e0;
+    }
+    
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      color: #222;
     }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
     .container {
-      max-width: 500px;
-      margin: 60px auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      padding: 32px 28px 24px 28px;
-      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-lg);
     }
+    
+    header {
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      padding-top: var(--spacing-lg);
+      background-color: var(--bg-white);
+      border-bottom: 1px solid var(--border-color);
+      padding: var(--spacing-lg);
+    }
+    
     h1 {
-      margin-bottom: 18px;
-      font-size: 2.1em;
-      letter-spacing: 1px;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
     }
-    .plugin-link {
-      display: inline-block;
-      margin: 24px 0 32px 0;
-      padding: 14px 32px;
-      background: #0078d7;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 1.1em;
-      transition: background 0.2s;
+    
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
     }
-    .plugin-link:hover {
-      background: #005fa3;
+    
+    p {
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-md);
+      font-size: 1rem;
+      line-height: 1.6;
     }
-    .author {
-      margin-top: 60px;
-      font-size: 0.92em;
-      color: #bbb;
-      text-align: center;
-      letter-spacing: 0.5px;
-    }
-    .email {
-      color: #bbb;
-      text-decoration: none;
-    }
-    footer {
-      margin-top: 60px;
-      padding: 18px 0 10px 0;
-      font-size: 0.92em;
-      color: #bbb;
-      text-align: center;
-      letter-spacing: 0.5px;
-      background: none;
-    }
-    footer a {
-      color: #bbb;
-      text-decoration: none;
-    }
-    .plugin-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      margin-top: 40px;
+      padding: 8px 16px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
     }
-    .plugin-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      width: 260px;
-      padding: 18px 18px 24px 18px;
-      text-align: center;
-      transition: box-shadow 0.2s;
+    
+    .btn:hover {
+      background: var(--primary-hover);
     }
-    .plugin-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+    
+    .btn-icon {
+      margin-right: 8px;
     }
-    .plugin-img {
+    
+    .card {
+      background: var(--bg-white);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    
+    .card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    
+    .tutorial-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      background: var(--bg-white);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      padding: var(--spacing-lg);
+      border: 1px solid var(--border-color);
+    }
+    
+    .tutorial-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .tutorial-video {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .video-container {
+      position: relative;
       width: 100%;
-      height: 140px;
-      object-fit: contain;
-      border-radius: 8px;
-      margin-bottom: 14px;
+      max-width: 400px;
+      height: 225px; /* 16:9比例 */
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
     }
-    .plugin-info h2 {
-      margin: 0 0 8px 0;
-      font-size: 1.2em;
+    
+    .video-thumbnail {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
     }
-    .plugin-info p {
-      color: #888;
-      font-size: 0.98em;
-      margin-bottom: 16px;
+    
+    .video-play-button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    
+    .video-play-button:hover {
+      background: rgba(0,0,0,0.2);
+    }
+    
+    .play-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      border: 1px solid var(--border-color);
+    }
+    
+    .play-icon:hover {
+      transform: scale(1.05);
+    }
+    
+    .play-arrow {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 0 8px 14px;
+      border-color: transparent transparent transparent var(--primary-color);
+      margin-left: 3px;
+    }
+    
+    .plugin-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .plugin-card {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-md);
+      height: 100%;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-white);
+    }
+    
+    .plugin-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .plugin-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      margin-right: var(--spacing-md);
+      object-fit: cover;
+      border: 1px solid var(--border-color);
+    }
+    
+    .plugin-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .plugin-description {
+      flex-grow: 1;
+      margin-bottom: var(--spacing-md);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    
+    .plugin-video {
+      margin-top: var(--spacing-md);
+      border-top: 1px solid rgba(0,0,0,0.05);
+      padding-top: var(--spacing-md);
+    }
+    
+    .plugin-video-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .plugin-video-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--primary-color);
+      margin-right: 8px;
+      border-radius: 2px;
+    }
+    
+    footer {
+      margin-top: var(--spacing-xl);
+      padding: var(--spacing-lg) 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    footer a:hover {
+      color: var(--primary-color);
+    }
+    
+    @media (max-width: 900px) {
+      .tutorial-section {
+        grid-template-columns: 1fr;
+      }
+      
+      .plugin-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .plugin-card {
+        grid-template-columns: 1fr;
+      }
+      
+      .plugin-img-container {
+        height: 180px;
+        margin-bottom: var(--spacing-sm);
+      }
+    }
+    
+    .plugin-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--spacing-sm);
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .plugin-video-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      background-color: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+    }
+    
+    .plugin-video-link:hover {
+      background-color: #e8e8e8;
+    }
+    
+    /* Windows风格的布局优化 */
+    .main-content {
+      background-color: var(--bg-white);
+      border: 1px solid var(--border-color);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    /* 插件专属视频样式 */
+    .plugin-video {
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-md);
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .plugin-video-title {
+      font-weight: 500;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
+    }
+    
+    .plugin-video .video-container {
+      width: 100%;
+      height: 225px;
+      max-width: 400px;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>插件下载站</h1>
-    <div style="margin-bottom: 32px;">
-      <h2 style="font-size:1.15em;margin-bottom:8px;">安装教程视频</h2>
-      <p style="color:#666;font-size:0.98em;margin-bottom:10px;">将在本网站下载的扩展压缩包解压到指定目录，然后按视频教程加载解压后的文件。示例用的edge浏览器，其他浏览器同理。</p>
-      <video controls style="width:100%;max-width:420px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
-        <source src="guide.mp4" type="video/mp4">
-        您的浏览器不支持视频播放。
-      </video>
+    <header>
+      <h1>浏览器插件下载站</h1>
+      <p>这里提供了一些实用的浏览器插件下载</p>
+    </header>
+    
+    <div class="main-content">
+      <div class="tutorial-section card">
+        <div class="tutorial-content">
+          <h2>安装教程</h2>
+          <p>将在本网站下载的扩展压缩包解压到指定目录，然后按视频教程加载解压后的文件。示例用的edge浏览器，其他浏览器同理。</p>
+        </div>
+        <div class="tutorial-video">
+          <div class="video-container">
+            <img src="FreeNotes.png" alt="视频封面" class="video-thumbnail">
+            <div class="video-play-button" onclick="playVideo(this, 'guide.mp4')">
+              <div class="play-icon">
+                <div class="play-arrow"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="plugin-list" id="plugin-list">
-      <!-- 插件卡片将由JS动态生成 -->
+    
+    <div class="main-content">
+      <h2>可用插件</h2>
+      <div class="plugin-list" id="plugin-list">
+        <!-- 插件卡片将由JS动态生成 -->
+      </div>
     </div>
   </div>
+  
   <footer>
-    © 2025 Watson | <a href="mailto:watson@heytripgo.com">watson@heytripgo.com</a>
+    © 2025 | <a href="mailto:watson@heytripgo.com">watson@heytripgo.com</a>
   </footer>
+  
   <script>
+    // 播放视频函数
+    function playVideo(element, videoSrc) {
+      const container = element.parentElement;
+      container.innerHTML = `<video controls autoplay style="width:100%;border-radius:var(--radius-sm);"><source src="${videoSrc}" type="video/mp4">您的浏览器不支持视频播放。</video>`;
+    }
+    
+    // 加载插件数据
     fetch('plugins.json')
-      .then(res => res.json())
+      .then(response => response.json())
       .then(plugins => {
-        const list = document.getElementById('plugin-list');
+        const pluginList = document.getElementById('plugin-list');
+        
         plugins.forEach(plugin => {
-          const card = document.createElement('div');
-          card.className = 'plugin-card';
-          card.innerHTML = `
-            <img src="${plugin.img}" alt="${plugin.name} 产品图" class="plugin-img">
-            <div class="plugin-info">
-              <h2>${plugin.name}</h2>
-              <p>${plugin.desc}</p>
-              <a class="plugin-link" href="${plugin.download}" download>下载 ${plugin.version}</a>
-              ${plugin.name === 'Free Notes' ? `
-                <div style='margin-top:18px;'>
-                  <div style='font-size:0.99em;color:#666;margin-bottom:7px;'>专属教程视频</div>
-                  <video controls style='width:100%;max-width:220px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);'>
-                    <source src='guide1.mp4' type='video/mp4'>
-                    您的浏览器不支持视频播放。
-                  </video>
-                </div>
-              ` : ''}
-              ${plugin.name === 'Multi Highlight' ? `
-                <div style='margin-top:18px;'>
-                  <div style='font-size:0.99em;color:#666;margin-bottom:7px;'>专属教程视频</div>
-                  <video controls style='width:100%;max-width:220px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);'>
-                    <source src='guide2.mp4' type='video/mp4'>
-                    您的浏览器不支持视频播放。
-                  </video>
-                </div>
-              ` : ''}
-            </div>
+          const pluginCard = document.createElement('div');
+          pluginCard.className = 'card plugin-card';
+          
+          const header = document.createElement('div');
+          header.className = 'plugin-header';
+          
+          const icon = document.createElement('img');
+          icon.src = plugin.icon || plugin.img;
+          icon.alt = plugin.name;
+          icon.className = 'plugin-icon';
+          
+          const title = document.createElement('h3');
+          title.className = 'plugin-title';
+          title.textContent = plugin.name;
+          
+          header.appendChild(icon);
+          header.appendChild(title);
+          
+          const description = document.createElement('div');
+          description.className = 'plugin-description';
+          description.textContent = plugin.desc;
+          
+          const footer = document.createElement('div');
+          footer.className = 'plugin-footer';
+          
+          const downloadBtn = document.createElement('a');
+          downloadBtn.href = plugin.download;
+          downloadBtn.className = 'btn';
+          downloadBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            下载 ${plugin.version || ''}
           `;
-          list.appendChild(card);
+          downloadBtn.download = true;
+          
+          // 如果有视频教程，添加视频链接
+          if (plugin.video) {
+            const videoSection = document.createElement('div');
+            videoSection.className = 'plugin-video';
+            
+            const videoTitle = document.createElement('div');
+            videoTitle.className = 'plugin-video-title';
+            videoTitle.textContent = '专属教程视频';
+            
+            const videoContainer = document.createElement('div');
+            videoContainer.className = 'video-container';
+            
+            videoContainer.innerHTML = `
+              <img src="${plugin.img}" alt="视频封面" class="video-thumbnail">
+              <div class="video-play-button" onclick="playVideo(this, '${plugin.video}')">
+                <div class="play-icon">
+                  <div class="play-arrow"></div>
+                </div>
+              </div>
+            `;
+            
+            videoSection.appendChild(videoTitle);
+            videoSection.appendChild(videoContainer);
+            pluginCard.appendChild(header);
+            pluginCard.appendChild(description);
+            pluginCard.appendChild(footer);
+            pluginCard.appendChild(videoSection);
+          } else {
+            pluginCard.appendChild(header);
+            pluginCard.appendChild(description);
+            pluginCard.appendChild(footer);
+          }
+          
+          footer.appendChild(downloadBtn);
+          pluginList.appendChild(pluginCard);
         });
-      });
+      })
+      .catch(error => console.error('加载插件数据失败:', error));
   </script>
 </body>
-</html> 
+</html>
