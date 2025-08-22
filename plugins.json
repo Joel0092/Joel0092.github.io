@@ -9,13 +9,14 @@
   },
   {
     "name": "Multi Highlight",
-    "desc": "Multi Highlight 多关键词高亮浏览器扩展。\nV1.07已更新支持：\n1. 邮箱页面高亮\n2. 开关单个关键词高亮\n3. 搜索以及定位关键词\n4. 安装时附带一些通用的关键词，懒人专属",
+    "desc": "Multi Highlight 多关键词高亮浏览器扩展。\nV1.08已更新支持：\n1. 邮箱页面高亮\n2. 开关单个关键词高亮\n3. 搜索以及定位关键词\n4. 安装时附带一些通用的关键词，懒人专属",
     "img": "Multi Highlight.png",
-    "download": "https://github.com/Joel0092/Multi-Highlight/archive/refs/tags/V1.07.zip",
-    "version": "V1.07",
+    "download": "https://github.com/Joel0092/Multi-Highlight/archive/refs/tags/V1.08.zip",
+    "version": "V1.08",
     "video": "guide2.mp4"
   }
 ]
+
 
 
 
