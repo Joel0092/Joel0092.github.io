@@ -245,6 +245,9 @@
       margin-bottom: var(--spacing-md);
       color: var(--text-secondary);
       font-size: 0.95rem;
+      white-space: pre-line;        /* 支持\n换行 */
+      word-break: break-word;       /* 中文/英文长词都可断行 */
+      overflow-wrap: anywhere;      /* 进一步保证换行 */
     }
     
     .plugin-video {
@@ -361,19 +364,47 @@
       max-width: 400px;
       margin: 0 auto;
     }
+    
+    /* 新增：插件截图画廊样式 */
+    .plugin-gallery {
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-md);
+      border-top: 1px solid var(--border-color);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .gallery-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background-color: #fafafa;
+      cursor: zoom-in;
+    }
+    
+    /* 新增：作者信息样式（小字体、灰色、低透明度） */
+    .plugin-author {
+      font-size: 12px;
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>浏览器插件下载站</h1>
-      <p>这里提供了一些实用的浏览器插件下载</p>
+      <p>包含插件下载链接和预览界面或视频，欢迎下载使用，任何建议或者bug请钉聊对应的插件作者。</p>
     </header>
     
     <div class="main-content">
       <div class="tutorial-section card">
         <div class="tutorial-content">
-          <h2>插件安装教程</h2>
+          <h2>通用插件安装教程</h2>
           <p>将在本网站下载的扩展压缩包解压到指定目录，然后按视频教程加载解压后的文件。示例用的edge浏览器，其他浏览器同理。</p>
         </div>
         <div class="tutorial-video">
@@ -390,7 +421,7 @@
     </div>
     
     <div class="main-content">
-      <h2>可用插件</h2>
+      <h2>插件列表</h2>
       <div class="plugin-list" id="plugin-list">
         <!-- 插件卡片将由JS动态生成 -->
       </div>
@@ -480,6 +511,44 @@
             pluginCard.appendChild(header);
             pluginCard.appendChild(description);
             pluginCard.appendChild(footer);
+          }
+          
+          // 新增：如果存在截图画廊，渲染图片展示
+          if (plugin.gallery && Array.isArray(plugin.gallery) && plugin.gallery.length > 0) {
+            const gallerySection = document.createElement('div');
+            gallerySection.className = 'plugin-gallery';
+            
+            const galleryTitle = document.createElement('div');
+            galleryTitle.className = 'plugin-video-title';
+            galleryTitle.textContent = '界面预览';
+            
+            const grid = document.createElement('div');
+            grid.className = 'gallery-grid';
+            
+            plugin.gallery.forEach(imgSrc => {
+              const a = document.createElement('a');
+              a.href = imgSrc;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+              const image = document.createElement('img');
+              image.src = imgSrc;
+              image.alt = plugin.name + ' 截图';
+              image.className = 'gallery-img';
+              a.appendChild(image);
+              grid.appendChild(a);
+            });
+            
+            gallerySection.appendChild(galleryTitle);
+            gallerySection.appendChild(grid);
+            pluginCard.appendChild(gallerySection);
+          }
+          
+          // 新增：作者信息（显示在底部左侧）
+          if (plugin.author) {
+            const authorEl = document.createElement('div');
+            authorEl.className = 'plugin-author';
+            authorEl.textContent = `作者：${plugin.author}`;
+            footer.appendChild(authorEl);
           }
           
           footer.appendChild(downloadBtn);

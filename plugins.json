@@ -5,7 +5,8 @@
     "img": "FreeNotes.png",
     "download": "https://github.com/Joel0092/Free-Notes/archive/refs/tags/V1.09.zip",
     "version": "V1.09",
-    "video": "guide1.mp4"
+    "video": "guide1.mp4",
+    "author": "Watson"
   },
   {
     "name": "Multi Highlight",
@@ -13,9 +14,19 @@
     "img": "Multi Highlight.png",
     "download": "https://github.com/Joel0092/Multi-Highlight/archive/refs/tags/V1.08.zip",
     "version": "V1.08",
-    "video": "guide2.mp4"
-  }
-]
+    "video": "guide2.mp4",
+    "author": "Watson"
+  },
+  {
+     "name": "一键模板",
+     "desc": "一键模板浏览器扩展，可自动读取订单页面信息并一键生成中英文模板。\n功能：\n1. 自动读取订单页面的单号、酒店名称等信息，生成中英文问房模板；\n2. 自动读取订单页面的单号与确认号，生成中英文更新确认号模板；\n意义：无需逐条复制信息，提高效率。",
+     "img": "一键模板2.png",
+     "gallery": ["一键模版1.png", "一键模板2.png"],
+     "download": "https://github.com/Joel0092/-/archive/refs/tags/V1.0.zip",
+     "version": "V1.0",
+     "author": "Tyler"
+    }
+  ]
 
 
 
