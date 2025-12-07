@@ -416,11 +416,22 @@
     }
     
     // 加载插件数据
-    fetch('plugins.json')
-      .then(response => response.json())
+    fetch('plugins.json?v=' + new Date().getTime())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(plugins => {
         const pluginList = document.getElementById('plugin-list');
         
+        // 如果没有插件数据
+        if (!plugins || plugins.length === 0) {
+          pluginList.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">暂无插件数据</p>';
+          return;
+        }
+
         plugins.forEach(plugin => {
           const pluginCard = document.createElement('div');
           pluginCard.className = 'card plugin-card';
