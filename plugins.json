@@ -31,11 +31,12 @@
     "desc": "这是一个基于 Qwen3-8B 模型的客服话术工具。\n功能：\n1. 划词翻译（翻译 、 话术润色 、 申诉辅助 、 售后概括）；\n2. 话术匹配，输入关键词匹配对应话术。\n旨在全方位提升客服沟通效率。",
     "img": "客服话术工具1.png",
     "gallery": ["客服话术工具1.png", "客服话术工具2.png"],
-    "download": "https://gitee.com/Joelwatson/plugin-version-update-zip/archive/refs/tags/v1.3.0.zip",
+    "download": "https://gitee.com/Joelwatson/plugin-version-update-zip/archive/refs/tags/v.true1.3.0.zip",
     "version": "V1.3.0",
     "author": "Watson"
   }
   ]
+
 
 
 
